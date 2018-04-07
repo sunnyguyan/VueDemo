@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+    <title>v-on事件监听器</title>
+</head>
+<body>
+    <h1>v-on 事件监听器</h1>
+    <hr>
+    <div id="app">
+       本场比赛得分： {{count}}<br/>
+       <button v-on:click="jiafen">加分</button>
+       <button v-on:click="jianfen">减分</button>
+       <input type="text" v-on:keyup.13="onEnter" v-model="secondCount">
+ 
+    </div>
+ 
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:1,
+                secondCount:2
+            },
+            methods:{
+                jiafen:function(){
+                    this.count++;
+                },
+                jianfen:function(){
+                    this.count--;
+                },
+                onEnter:function(){
+     this.count=this.count+parseInt(this.secondCount);
+}
+            }
+        })
+    </script>
+</body>
+</html>

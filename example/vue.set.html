@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.set全局操作</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+</head>
+</head>
+<body>
+    <h1>vue.set全局操作</h1>
+    <hr>
+    <div id="app">
+      {{count}}
+      <ul>
+          <li v-for="item in countarr">{{item}}</li>
+      </ul>
+    </div>
+    <p><button onclick='add()'>ADD</button></p>
+    <script>
+        function add(){
+            //Vue.set(countData,'count',2)
+           //app.count++;
+           //app.countarr[1]='dddd';
+        Vue.set(app.countarr,1,'dddd')
+        }
+   var countData={
+       count:1,
+       countarr:['aaa','bbb','ccc']
+   };
+    var app=new Vue({
+        el:'#app',
+        data:countData
+    })
+    </script>
+</body>
+</html>

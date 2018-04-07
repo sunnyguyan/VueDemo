@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component-2</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+</head>
+</head>
+<body>
+    <h1>compotent-2</h1>
+    <hr>
+    <div id="app">
+        <!-- <panda here="china"></panda> -->
+        <!-- <panda from-here="china"></panda> -->
+        <panda :here="message"></panda>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'sichuan'
+            },
+            components:{
+                'panda':{
+                    template:`<div style="color:red;">Panda from {{here}}</div>`,
+                    props:['here']
+                    // props:['fromHere']
+                }
+            }
+        })
+    </script>
+</body>
+</html></html>

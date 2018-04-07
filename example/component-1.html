@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component-1</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+</head>
+</head>
+<body>
+    <h1>compotent-1</h1>
+    <hr>
+    <div id="app">
+        <zidingyi></zidingyi>
+        <panda></panda>
+    </div>
+
+    <script>
+        Vue.component("zidingyi",{
+            template:`<div style="color:red;">全局化注册的自定义标签</div>`
+        })
+        var app=new Vue({
+            el:'#app',
+            components:{
+                'panda':{
+                    template:`<div style="color:red;">局部注册的panda标签</div>`
+                }
+            }
+        })
+    </script>
+</body>
+</html></html>

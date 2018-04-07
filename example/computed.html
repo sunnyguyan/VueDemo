@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+</head>
+</head>
+<body>
+    <h1>computed</h1>
+    <hr>
+    <div id="app">
+  {{newPrice}}
+    </div>
+    <script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            price:1000
+        },
+        computed:{
+            newPrice:function(){
+                return this.price='￥'+this.price+'元';
+            }
+        }
+    })
+    </script>
+</body>
+</html>

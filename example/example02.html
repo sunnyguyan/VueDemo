@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example methods Demo</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+    <script type="text/javascript" src="../assert/js/jquery-3.2.1.min.js"></script>
+</head>
+</head>
+<body>
+    <h1>example methods Demo</h1>
+    <hr>
+    <div id="app">
+        
+    </div>
+    <p><button onclick="destroy()">卸载</button></p>
+    <p><button onclick="reload()">刷新</button></p>
+    <script>
+   var zidingyi=Vue.extend({
+       template:`<p>{{message}}</p>`,
+       data:function(){
+           return{
+               message:'hello,i am guyan'
+           }
+       },
+       mounted:function(){
+           console.log('mounted 被创建');
+       },
+       destroyed:function(){
+           console.log("destroy 销毁之后");
+       },
+      updated:function(){
+        console.log("updated 数据更新之后");
+          
+      } 
+   })
+    var vm=new zidingyi().$mount("#app");
+    function destroy(){
+        vm.$destroy();
+    }
+    function reload(){
+        vm.$forceUpdate();
+    }
+    </script>
+</body>
+</html>
