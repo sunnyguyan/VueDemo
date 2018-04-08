@@ -10,9 +10,10 @@
 </head>
 <body>
    <h1>vue.extend扩展实例构造器</h1>
-   <div id="author"></div>
+   <author></author>
+  <!-- <div id="author"></div>-->
     <script>
-        var authorname=Vue.extend({
+        var authorExtend=Vue.extend({
             template:`<p><a :href="authorUrl">{{authorname}}</a></p>`,
             data:function(){
                 return{
@@ -21,7 +22,9 @@
                 }
             }
         });
-        new authorname().$mount("#author");
+        new authorExtend().$mount("author");
+//      new authorExtend().$mount("#author");
+        
     </script>
 </body>
 </html>
