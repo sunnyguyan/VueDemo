@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件参数校验与非props特性</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+</head>
+</head>
+
+<body>
+    <div id="root">
+        <child content="hello world"></child>
+    </div>
+    <script>
+        Vue.component('child', {
+            props: {
+                content: {
+                    //content:[String,Number]
+                    type: [String, Number],
+                    required: true,
+                    default: 'default value',
+                    validator: function (value) {
+                        return (value.length > 5)
+                    }
+                }
+            },
+            template: '<div>{{content}}</div>',
+
+        })
+        var vm = new Vue({
+            el: '#root'
+        })
+    </script>
+</body>
+
+</html>

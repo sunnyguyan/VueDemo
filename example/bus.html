@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件参数校验与非props特性</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+</head>
+</head>
+<body>
+   <div id="root">
+       <child content="Dell"></child>
+       <child content="Lee"></child>
+    </div>
+    <script>
+        Vue.prototype.bus=new Vue()
+     Vue.component('child',{
+         data(){
+             return {
+                 selfContent:this.content
+             }
+         },
+         props:{
+             content:String
+         },
+         template:'<div @click="handleClick">{{selfContent}}</div>',
+         methods:{
+            handleClick(){
+                this.bus.$emit('change',this.content)
+            }
+         },
+         mounted:function(){
+             var this_=this
+             this.bus.$on('change',function(msg){
+                this_.selfContent=msg
+             })
+         }
+     })
+      var vm=new Vue({
+          el:'#root'
+      })
+    </script>
+</body>
+</html>
