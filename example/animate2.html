@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue中同时使用过渡和动画</title>
+<link rel="stylesheet" href="../assert/css/animate.min.css">
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+    <style>
+       .fade-enter,.fade-leave-to{
+            opacity: 0;
+       }
+       .fade-enter-active,.fade-leave-active{
+           transition:opacity 1s;
+       }
+    </style>
+</head>
+<body>
+    <h2>vue的css动画原理</h2>
+    <div id="app">
+        <transition 
+        :duration="{enter:1000,leave:10000}"
+        name="fade"  appear
+        leave-active-class="animated shake fade-leave-ative" 
+        enter-active-class="animated swing fade-enter-active"
+        appear-active-class="animated swing"
+        >
+                <div v-if="show" >hello world</div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+    <script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            show:true
+        },
+        methods:{
+            handleClick(){
+                this.show=!this.show
+            }
+        }
+    })
+    </script>
+</body>
+</html>

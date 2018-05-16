@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue中的列表过渡</title>
+    <script type="text/javascript" src="../assert/js/vue.js"></script>
+    <script type="text/javascript" src="../assert/js/velocity.js"></script>
+    <style>
+         .fade-enter,.fade-leave-to{
+            opacity: 0;
+       }
+       .fade-enter-active,.fade-leave-active{
+           transition:opacity 1s;
+       }
+    </style>
+</head>
+<body>
+    <h2>vue的css动画原理</h2>
+    <div id="app">
+        <transition-group name="fade" mode="out-in">
+                <div v-for="item in list" :key='item.id'>{{item.title}}</div>
+        </transition-group>
+        <button @click="handleClick">Add</button>
+    </div>
+    <script>
+  
+  var count=0;
+    var app=new Vue({
+        el:'#app',
+        data:{
+            list:[]
+        },
+        methods:{
+            handleClick(){
+               this.list.push({
+                   id:count++,
+                   title:'hello world'
+               })
+            }
+           
+        }
+    })
+    </script>
+</body>
+</html>
